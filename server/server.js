@@ -95,13 +95,9 @@ app.patch('/todos/:id',(req,res)=>{
     });
 });
 
-//Users
 app.post('/users',(req,res)=>{
     var body = _.pick(req.body,['email','password']);
     var user = new User(body);
-
-    // User.findByToken
-    // user.generateAuthToke
 
     user.save().then(()=>{
         return user.generateAuthToken();
